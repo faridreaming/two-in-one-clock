@@ -1,0 +1,25 @@
+body {
+  margin: 0
+}
+
+.clock-container {
+  width: 30rem;
+  height: 30rem;
+  border: 1rem solid #000;
+  margin: 1rem auto 0;
+  background-color: rgba(0, 0, 0, .75);
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  position: relative
+}
+
+.clock-container>div {
+  height: 15rem;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  transform-origin: 100% 100%;
+  color: #fff
+}

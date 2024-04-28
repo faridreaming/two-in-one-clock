@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2-In-1 Clock</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .clock-container {
+        width: 27.5rem;
+        height: 27.5rem;
+        border: 1rem solid #000000;
+        margin: 1rem auto 0;
+        background-color: rgba(0, 0, 0, 0.75);
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        position: relative;
+      }
+
+      .clock-container > div {
+        height: 15rem;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        transform-origin: 100% 100%;
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock-container">
+      <div class="hours">
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+      </div>
+      <div class="minutes">
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+      </div>
+      <div class="seconds">
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+        <div class="number">xx</div>
+      </div>
+    </div>
+    <script>
+      const secondsClockwise = document.querySelector(".seconds");
+      const secondsNumber = document.querySelectorAll(".seconds div");
+      const minutesClockwise = document.querySelector(".minutes");
+      const minutesNumber = document.querySelectorAll(".minutes div");
+      const hoursClockwise = document.querySelector(".hours");
+      const hoursNumber = document.querySelectorAll(".hours div");
+
+      const clockFormat = (time) => {
+        return time < 10 ? `0${time}` : time;
+      };
+
+      const updateClock = () => {
+        const dt = new Date();
+
+        secondsNumber.forEach((e, i) => {
+          secondsNumber[i].textContent = clockFormat(dt.getSeconds());
+        });
+        secondsClockwise.style.transform = `rotate(${6 * dt.getSeconds()}deg)`;
+
+        minutesNumber.forEach((e, i) => {
+          minutesNumber[i].textContent = clockFormat(dt.getMinutes());
+        });
+        minutesClockwise.style.transform = `rotate(${6 * dt.getMinutes()}deg)`;
+
+        hoursNumber.forEach((e, i) => {
+          hoursNumber[i].textContent = clockFormat(dt.getHours());
+        });
+        hoursClockwise.style.transform = `rotate(${30 * dt.getHours()}deg)`;
+      };
+
+      setInterval(updateClock, 1);
+    </script>
+  </body>
+</html>
